@@ -5,11 +5,11 @@ import GlobalsStyles from './styles/globals';
 
 import Routes from './routes';
 
-function App() {
+function App(): JSX.Element {
   return (
     <>
       <BrowserRouter>
-        <Routes/>
+        <Routes />
       </BrowserRouter>
       <GlobalsStyles />
     </>
