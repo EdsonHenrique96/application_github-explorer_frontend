@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 
 export const Title = styled.h1`
-  color: #3A3A3A;
+  color: #3a3a3a;
 
   font-size: 48px;
   font-weight: bold;
   line-height: 56px;
 
-  max-width: 450px; 
+  max-width: 450px;
 
   margin-top: 102px;
 `;
@@ -37,17 +37,17 @@ export const Form = styled.form`
     width: 210px;
     height: 70px;
 
-    background: #04D361;
+    background: #04d361;
     border: 0;
 
     border-radius: 0 5px 5px 0;
-    color: #FFF;
+    color: #fff;
     font-weight: bold;
 
     transition: background-color 0.2s;
 
     &:hover {
-      background: ${shade(0.2, '#04D361')}
+      background: ${shade(0.2, '#04D361')};
     }
   }
 `;
@@ -60,15 +60,10 @@ export const Repositories = styled.div`
   a {
     &:hover {
       transform: translateX(10px);
-
-      img {
-        width: 66px;
-        height: 66px;
-      }
     }
 
-    /* 
-      O & representa o elemento atual, 
+    /*
+      O & representa o elemento atual,
       toda vez que o 'a' for precedido por & que nesse caso é outro 'a',
       eu aplico a margem. Assim não é aplicado no primeiro 'a'
     */
@@ -94,11 +89,12 @@ export const Repositories = styled.div`
   }
 
   div {
-    margin-left: 16px;
+    margin: 0 16px;
+    flex: 1;
 
     strong {
       font-size: 20px;
-      color: #3D3D4D;
+      color: #3d3d4d;
     }
 
     P {
@@ -110,6 +106,6 @@ export const Repositories = styled.div`
 
   svg {
     margin-left: auto;
-    color: #C9C9D4;
+    color: #c9c9d4;
   }
 `;

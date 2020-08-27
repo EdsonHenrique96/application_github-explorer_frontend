@@ -10,6 +10,7 @@ interface Repository {
   name: string;
   description: string;
   url: string;
+  full_name: string;
   owner: {
     avatar_url: string;
     login: string;
@@ -29,6 +30,7 @@ const Dashboard: React.FC = () => {
     const repository = response.data;
 
     setRepositories([...repositories, repository]);
+    setNewRepo('');
   };
 
   return (
@@ -45,18 +47,17 @@ const Dashboard: React.FC = () => {
       </Form>
 
       <Repositories>
-        <a href="test">
-          <img
-            src="https://avatars2.githubusercontent.com/u/30643630?s=460&u=d87bede43db962a5aed9d352e0a18c53ccd57c73&v=4"
-            alt="Edson Henrique"
-          />
-          <div>
-            <strong>application_github-explorer</strong>
-            <p>Um frontend ai</p>
-          </div>
+        {repositories.map(repo => (
+          <a href="test" key={repo.full_name}>
+            <img src={repo.owner.avatar_url} alt={repo.owner.login} />
+            <div>
+              <strong>{repo.full_name}</strong>
+              <p>{repo.description}</p>
+            </div>
 
-          <FiChevronRight size={20} />
-        </a>
+            <FiChevronRight size={20} />
+          </a>
+        ))}
       </Repositories>
     </>
   );
