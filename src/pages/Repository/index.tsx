@@ -25,15 +25,29 @@ interface Repository {
   };
 }
 
+interface Issue {
+  html_url: string;
+  id: number;
+  title: string;
+  user: {
+    login: string;
+  };
+}
+
 const Repository: React.FC = () => {
   const { params } = useRouteMatch<RepositoryParam>();
 
   const [repository, setRepository] = useState<Repository | null>(null);
+  const [issues, setIssues] = useState<Issue[]>([]);
 
   useEffect(() => {
     api
       .get(`/repos/${params.repositoryPath}`)
       .then(response => setRepository(response.data));
+
+    api
+      .get(`repos/${params.repositoryPath}/issues`)
+      .then(response => setIssues(response.data));
   }, [params.repositoryPath]);
 
   return (
@@ -74,14 +88,16 @@ const Repository: React.FC = () => {
             </ul>
           </RepositoryInfos>
           <Issues>
-            <Link to="/">
-              <div>
-                <strong>repo.full_name</strong>
-                <p>repo.description</p>
-              </div>
+            {issues.map(issue => (
+              <Link to={issue.html_url} key={issue.id}>
+                <div>
+                  <strong>{issue.title}</strong>
+                  <p>{issue.user.login}</p>
+                </div>
 
-              <FiChevronRight size={20} />
-            </Link>
+                <FiChevronRight size={20} />
+              </Link>
+            ))}
           </Issues>
         </>
       )}
