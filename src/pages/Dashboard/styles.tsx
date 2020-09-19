@@ -78,7 +78,7 @@ export const Repositories = styled.div`
 
   a {
     &:hover {
-      transform: translateX(10px);
+      transform: translateX(5px);
     }
 
     /*

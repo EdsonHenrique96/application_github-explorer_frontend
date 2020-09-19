@@ -40,6 +40,10 @@ const Dashboard: React.FC = () => {
     localStorage.setItem(localStorageFieldName, JSON.stringify(repositories));
   }, [repositories]);
 
+  useEffect(() => {
+    if (!newRepo) setInputError('');
+  }, [newRepo]);
+
   const handleAddRepository = async (
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> => {
